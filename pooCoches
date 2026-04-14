@@ -1,0 +1,64 @@
+class Coche {
+    constructor(marca, modelo, velocidad, encendido) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.velocidad = 0;
+        this.encendido = false;
+
+        
+    }
+ encender() {
+    this.encendido = true;
+    console.log("El coche está encendido");
+  }
+
+  apagar() {
+    this.encendido = false;
+    this.velocidad = 0;
+    console.log("El coche está apagado");
+  }
+
+  acelerar(cantidad) {
+    if (!this.encendido) {
+      console.log("No puedes acelerar, el coche está apagado");
+      return;
+    }
+
+    this.velocidad += cantidad;
+    console.log(`Acelerando... Velocidad actual: ${this.velocidad}`);
+  }
+
+  frenar(cantidad) {
+    this.velocidad -= cantidad;
+
+    if (this.velocidad < 0) {
+      this.velocidad = 0;
+    }
+
+    console.log(`Frenando... Velocidad actual: ${this.velocidad}`);
+  }
+
+  estado() {
+    return `Marca: ${this.marca} | Encendido: ${this.encendido} | Velocidad: ${this.velocidad}`;
+  }
+}
+
+const coche1 = new Coche("Toyota", "Corolla");
+const coche2 = new Coche("Ford", "Focus");
+
+// Encender ambos
+coche1.encender();
+coche2.encender();
+
+// Coche 1 acelera
+coche1.acelerar(70);
+
+// Coche 2 acelera y luego frena
+coche2.acelerar(100);
+coche2.frenar(40);
+
+// Mostrar estados
+console.log(coche1.estado());
+console.log(coche2.estado());
+
+
